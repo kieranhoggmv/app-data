@@ -1,0 +1,1 @@
+C:\Users\john.smith\app-data\.venv\Scripts\activate && C:\Users\john.smith\app-data\.venv\Scripts\python.exe C:\Users\john.smith\Code\app-data\main.py --no-input

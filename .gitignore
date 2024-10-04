@@ -1,0 +1,8 @@
+__pycache__
+.venv*
+.updated
+*.csv
+*.db
+selenium_session
+.env
+run.bat
