@@ -1,3 +1,4 @@
+import glob
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 import os
@@ -31,6 +32,14 @@ class _Browser:
         # options.add_experimental_option("excludeSwitches", ["enable-automation"])
         profile_path = rf"C:\Users\{LOCAL_USER}\AppData\Local\Google\Chrome\User Data"
         profile_name = "Profile 1"
+        profiles = glob.glob(f"{profile_path}/Profile*")
+        if len(profiles) > 1:
+            profile_name = profiles[-1].split(os.sep)[-1]
+            print(
+                f'Warning: multiple Chrome profiles found. Using {profile_name}, if this is incorrect, add e.g. "CHROME_PROFILE = Profile 1" to .env'
+            )
+        else:
+            profile_name = "Profile 1"
         options.add_argument(f"--user-data-dir={profile_path}")
         options.add_argument(f"--profile-directory={profile_name}")
         # options.add_argument('--remote-debugging-port=9222')
