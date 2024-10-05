@@ -683,13 +683,17 @@ class Scraper:
         print(res.fetchall())
 
     def to_csv(self):
-        for table in ["apprentices", "apprentice_projects", "projects"]:
-            self.cur.execute(f"SELECT * FROM {table}")
-            # cur.fetchall()
-            with open(f"{table}.csv", "w") as f:
-                w = csv.writer(f, lineterminator="\n")
-                w.writerow([i[0] for i in self.cur.description])
-                w.writerows(self.cur)
+        try:
+            for table in ["apprentices", "apprentice_projects", "projects"]:
+                self.cur.execute(f"SELECT * FROM {table}")
+                with open(f"{table}.csv", "w") as f:
+                    w = csv.writer(f, lineterminator="\n")
+                    w.writerow([i[0] for i in self.cur.description])
+                    w.writerows(self.cur)
+            return True
+        except sqlite3.OperationalError:
+            print("Error getting data from the database - have you run an update yet?")
+            return False
 
     def missing_projects(self):
         # TODO grab which projects are missing

@@ -39,12 +39,12 @@ def main():
         if choice == 0:
             exit(0)
         elif choice == 1:
-            print(">>> Dumping all tables to .csv...", end="")
-            s.to_csv()
-            print(" done!")
-            print(
-                ">>> If an update wasn't run before this, this was the latest saved data"
-            )
+            print(">>> Dumping all tables to .csv... ", end="")
+            if s.to_csv():
+                print(" done!")
+                print(
+                    ">>> If an update wasn't run before this, this was the latest saved data"
+                )
             input(">>> Press any key to return to menu")
         elif choice == 2:
             print(">>> Full apprentice data update")
