@@ -10,6 +10,8 @@ To use to run on a schedule
 2. Open Task Scheduler in Windows
 3. Create Basic Task > Add a name > Daily or When I log on > Specify time > Browse to run.bat
 
+![image](https://github.com/user-attachments/assets/3627cd6c-6ae1-496b-8ce7-c377e74b6b68)
+
 # Notes
 * It looks possible to a) open a new Chrome window alongside existing windows and b) reuse that window for all the scraping, but neither is currently working so it will close existing Chrome sessions first
 * It currently uses a mis-mash of a sqlite database for internal storage and .csv for exports, at some point it will support both properly
